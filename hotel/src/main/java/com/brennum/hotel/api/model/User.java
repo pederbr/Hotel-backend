@@ -14,6 +14,13 @@ public class User {
   private String email;
   private String password;
   private boolean admin;
+  private int loyaltyPoints;
+
+  public User() {
+    this.loyaltyPoints = 0;
+    this.admin = false;
+  }
+
 
   public Integer getId() {
     return id;
@@ -45,5 +52,21 @@ public class User {
 
   public boolean isAdmin() {
     return admin;
+  }
+
+  public void setAdmin(boolean admin) {
+    this.admin = admin;
+  }
+
+  public int getLoyaltyPoints() {
+
+    return loyaltyPoints;
+  }
+
+  public void setLoyaltyPoints(Integer loyaltyPoints) {
+    if (this.loyaltyPoints - loyaltyPoints < 0) {
+      throw new IllegalArgumentException("Loyalty points cannot be negative");
+    }
+    this.loyaltyPoints = loyaltyPoints;
   }
 }
