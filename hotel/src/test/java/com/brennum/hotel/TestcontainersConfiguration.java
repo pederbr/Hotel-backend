@@ -1,4 +1,4 @@
-package com.peder.hotel;
+package com.brennum.hotel;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;

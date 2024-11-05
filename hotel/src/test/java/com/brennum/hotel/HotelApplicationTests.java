@@ -1,4 +1,4 @@
-package com.peder.hotel;
+package com.brennum.hotel;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
