@@ -1,0 +1,19 @@
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-zxitr0or4oay1a0n.us.auth0.com/
+          audiences: https://api.hotel.brennum
+  application:
+    name: hotel
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydatabase
+    username: myuser
+    password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
