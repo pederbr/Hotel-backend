@@ -2,70 +2,88 @@ package com.brennum.hotel.api.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "audit_logs")
 public class AuditLog {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    private int id;
-    private int userId;
-    private int roomId;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
-    private int totalPrice;
-    private boolean paid;
+    private Integer entityId;
 
-    public AuditLog() {
-        this.paid = false;
+    @Enumerated(EnumType.STRING)
+    private EntityType entityType;
+
+    @Enumerated(EnumType.STRING)
+    private ActionType action;
+
+    private final LocalDateTime createdAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private Customer user;
+
+    public enum EntityType {
+        ROOM, BOOKING, CUSTOMER
     }
 
-    public int getId() {
+    public enum ActionType {
+        CREATE, UPDATE, DELETE, STATUS_CHANGE
+    }
+
+    public AuditLog() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    // Getters and setters
+    public Integer getId() {
         return id;
     }
 
-    public int getUserId() {
-        return userId;
+    public Integer getEntityId() {
+        return entityId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setEntityId(Integer entityId) {
+        this.entityId = entityId;
     }
 
-    public int getRoomId() {
-        return roomId;
+    public EntityType getEntityType() {
+        return entityType;
     }
 
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setEntityType(EntityType entityType) {
+        this.entityType = entityType;
     }
 
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public ActionType getAction() {
+        return action;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
+    public void setAction(ActionType action) {
+        this.action = action;
     }
 
-    public LocalDateTime getEndDate() {
-        return endDate;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
-    
-
-    public int getTotalPrice() {
-        return totalPrice;
+    public Customer getUser() {
+        return user;
     }
 
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-    public boolean isPaid() {
-        return paid;
-    }
-
-    public void setPaid(boolean paid) {
-        this.paid = paid;
+    public void setUser(Customer user) {
+        this.user = user;
     }
 }
