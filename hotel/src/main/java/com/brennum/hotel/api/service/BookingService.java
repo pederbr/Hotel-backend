@@ -19,6 +19,7 @@ public class BookingService {
     private final RoomRepository roomRepository;
     private final CustomerRepository customerRepository;
     private final AuditLogService auditLogService;
+    
 
     public BookingService(BookingRepository bookingRepository,
                          RoomRepository roomRepository,

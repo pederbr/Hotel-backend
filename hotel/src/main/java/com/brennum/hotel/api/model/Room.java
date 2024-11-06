@@ -1,5 +1,7 @@
 package com.brennum.hotel.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,6 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "rooms")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +35,7 @@ public class Room {
     }
 
     public enum RoomType {
-        STANDARD, DELUXE, SUITE
+        SINGLE, DOUBLE, FAMILY
     }
 
     public enum RoomStatus {

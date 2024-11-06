@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "b8e2ff09-d5fe-448a-af76-8c575a6dc21b",
+		"name": "Admin calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39096796"
+	},
+	"item": [
+		{
+			"name": "opbtain admin token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"client_id\":\"dOuV6bo7Nqp7OoQLeggB1aRjVyDpIjp5\",\"client_secret\":\"ZUWh7iOjctZK7-JPjTKwlg9MWLf-ISv1DrM0W7UJdFuqko7q5QNl4JBldNgo8GCa\",\"audience\":\"https://api.hotel.brennum\",\"grant_type\":\"client_credentials\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-zxitr0or4oay1a0n.us.auth0.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"dev-zxitr0or4oay1a0n",
+						"us",
+						"auth0",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Generated from cURL: curl --request POST \\\r\n  --url https://dev-zxitr0or4oay1a0n.us.auth0.com/oauth/token \\\r\n  --header 'content-type: application/json' \\\r\n  --data '{\"client_id\":\"dOuV6bo7Nqp7OoQLeggB1aRjVyDpIjp5\",\"client_secret\":\"ZUWh7iOjctZK7-JPjTKwlg9MWLf-ISv1DrM0W7UJdFuqko7q5QNl4JBldNgo8GCa\",\"audience\":\"https://api.hotel.brennum\",\"grant_type\":\"client_credentials\"}'"
+			},
+			"response": []
+		},
+		{
+			"name": "all bookings",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikp5S1FJU01hQWhOUnZhTUFFRW1hbCJ9.eyJpc3MiOiJodHRwczovL2Rldi16eGl0cjBvcjRvYXkxYTBuLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJkT3VWNmJvN05xcDdPb1FMZWdnQjFhUmpWeURwSWpwNUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9hcGkuaG90ZWwuYnJlbm51bSIsImlhdCI6MTczMDg0OTc1MiwiZXhwIjoxNzMwOTM2MTUyLCJzY29wZSI6ImFkbWluIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoiZE91VjZibzdOcXA3T29RTGVnZ0IxYVJqVnlEcElqcDUifQ.EtGUCRvNiWW_D2RjO8on-OMdmJH4Ivzm9kP0PrRclGml4g2jV-EDnVzAK_zKJ9Mj_7CSEd94S4ePTRt2XIK375Q1FEs_zI1LAwdzGjyft6jtnzbJWqCh7EzoUe_j-9_nLjeW1BWPuFFPkl08ew64Yw51xUryxyHZcgX1xkxjVgdWEo63VIDjRklSAQqtquQaU40Lp6K9yq7-as9DVFcSLaFYZIDwwH1Ltcs1m6ij5358BhWEgdEwbijwDYlP2XUH3C5RL61-VTBKC3Fw_ioYERdzpPWziuf2rQ-p41Pu1YGTSrzOwQEA_07gFMq5Fyio5Q0qzOowswjm8ULACQk_lA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/bookings",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtain non admin token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"client_id\":\"PvSmNJX4kPvPjdZI4Jxv79rlwNM1jG5X\",\"client_secret\":\"1Z90okfBk1BcRQPSJc9kvbbRNA9zbaNHfZuow4juL42G8Rw-qIaZNHsTau7S_e5r\",\"audience\":\"https://api.hotel.brennum\",\"grant_type\":\"client_credentials\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev-zxitr0or4oay1a0n.us.auth0.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"dev-zxitr0or4oay1a0n",
+						"us",
+						"auth0",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				},
+				"description": "Generated from cURL: curl --request POST \\\r\n  --url https://dev-zxitr0or4oay1a0n.us.auth0.com/oauth/token \\\r\n  --header 'content-type: application/json' \\\r\n  --data '{\"client_id\":\"PvSmNJX4kPvPjdZI4Jxv79rlwNM1jG5X\",\"client_secret\":\"1Z90okfBk1BcRQPSJc9kvbbRNA9zbaNHfZuow4juL42G8Rw-qIaZNHsTau7S_e5r\",\"audience\":\"https://api.hotel.brennum\",\"grant_type\":\"client_credentials\"}'"
+			},
+			"response": []
+		},
+		{
+			"name": "create customer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Peder Brennum",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "peder.brennum@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "46515848",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/api/customers",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel booking",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikp5S1FJU01hQWhOUnZhTUFFRW1hbCJ9.eyJpc3MiOiJodHRwczovL2Rldi16eGl0cjBvcjRvYXkxYTBuLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJQdlNtTkpYNGtQdlBqZFpJNEp4djc5cmx3Tk0xakc1WEBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9hcGkuaG90ZWwuYnJlbm51bSIsImlhdCI6MTczMDg1MDY0MCwiZXhwIjoxNzMwOTM3MDQwLCJzY29wZSI6InJlYWR1c2VyIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoiUHZTbU5KWDRrUHZQamRaSTRKeHY3OXJsd05NMWpHNVgifQ.NzxuMWSs3Ccxur14sWEeTTfW6EVfktSqOK4Pd7CYbWjAnWbGzA4gpWbqWySXX8v8Nb5nWRpv1yhTlAQA4D2g21Z7qyDMqcvRHA5EycdfR4OiILo6g9FB7fDJ641KX0ftRNx9_49CTkHDv1nhcFZ8eAph84ynkhS3DCbkreBzVIYVidWDSsdJQJ_jgCHa0vDiUaEKuMpb0cOfr15Oogyv5ayOmwuQ3QeJjU6zwFskJXqLBC22YYhq0uFXuymVwRcCkkRzIk1yzNf7xV_-qGahIUlxUG1PLJCo8Cp4JWo20JmmhJ02O1GUOe5pTYGayqMphJoOQoiIFmb7ajIXy_3DyQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/bookings/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"bookings",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book a room",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikp5S1FJU01hQWhOUnZhTUFFRW1hbCJ9.eyJpc3MiOiJodHRwczovL2Rldi16eGl0cjBvcjRvYXkxYTBuLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJQdlNtTkpYNGtQdlBqZFpJNEp4djc5cmx3Tk0xakc1WEBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9hcGkuaG90ZWwuYnJlbm51bSIsImlhdCI6MTczMDg1MDY0MCwiZXhwIjoxNzMwOTM3MDQwLCJzY29wZSI6InJlYWR1c2VyIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoiUHZTbU5KWDRrUHZQamRaSTRKeHY3OXJsd05NMWpHNVgifQ.NzxuMWSs3Ccxur14sWEeTTfW6EVfktSqOK4Pd7CYbWjAnWbGzA4gpWbqWySXX8v8Nb5nWRpv1yhTlAQA4D2g21Z7qyDMqcvRHA5EycdfR4OiILo6g9FB7fDJ641KX0ftRNx9_49CTkHDv1nhcFZ8eAph84ynkhS3DCbkreBzVIYVidWDSsdJQJ_jgCHa0vDiUaEKuMpb0cOfr15Oogyv5ayOmwuQ3QeJjU6zwFskJXqLBC22YYhq0uFXuymVwRcCkkRzIk1yzNf7xV_-qGahIUlxUG1PLJCo8Cp4JWo20JmmhJ02O1GUOe5pTYGayqMphJoOQoiIFmb7ajIXy_3DyQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "roomId",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "start",
+							"value": "2024-11-06T01:12:20.118581461",
+							"type": "text"
+						},
+						{
+							"key": "end",
+							"value": "2024-11-08T01:12:20.118581461",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{base_url}}/api/bookings",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"bookings"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "test AuditLogs",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikp5S1FJU01hQWhOUnZhTUFFRW1hbCJ9.eyJpc3MiOiJodHRwczovL2Rldi16eGl0cjBvcjRvYXkxYTBuLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJkT3VWNmJvN05xcDdPb1FMZWdnQjFhUmpWeURwSWpwNUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9hcGkuaG90ZWwuYnJlbm51bSIsImlhdCI6MTczMDg0OTc1MiwiZXhwIjoxNzMwOTM2MTUyLCJzY29wZSI6ImFkbWluIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoiZE91VjZibzdOcXA3T29RTGVnZ0IxYVJqVnlEcElqcDUifQ.EtGUCRvNiWW_D2RjO8on-OMdmJH4Ivzm9kP0PrRclGml4g2jV-EDnVzAK_zKJ9Mj_7CSEd94S4ePTRt2XIK375Q1FEs_zI1LAwdzGjyft6jtnzbJWqCh7EzoUe_j-9_nLjeW1BWPuFFPkl08ew64Yw51xUryxyHZcgX1xkxjVgdWEo63VIDjRklSAQqtquQaU40Lp6K9yq7-as9DVFcSLaFYZIDwwH1Ltcs1m6ij5358BhWEgdEwbijwDYlP2XUH3C5RL61-VTBKC3Fw_ioYERdzpPWziuf2rQ-p41Pu1YGTSrzOwQEA_07gFMq5Fyio5Q0qzOowswjm8ULACQk_lA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/auditlog/user/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auditlog",
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Available Rooms",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikp5S1FJU01hQWhOUnZhTUFFRW1hbCJ9.eyJpc3MiOiJodHRwczovL2Rldi16eGl0cjBvcjRvYXkxYTBuLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJkT3VWNmJvN05xcDdPb1FMZWdnQjFhUmpWeURwSWpwNUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9hcGkuaG90ZWwuYnJlbm51bSIsImlhdCI6MTczMDg0OTc1MiwiZXhwIjoxNzMwOTM2MTUyLCJzY29wZSI6ImFkbWluIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoiZE91VjZibzdOcXA3T29RTGVnZ0IxYVJqVnlEcElqcDUifQ.EtGUCRvNiWW_D2RjO8on-OMdmJH4Ivzm9kP0PrRclGml4g2jV-EDnVzAK_zKJ9Mj_7CSEd94S4ePTRt2XIK375Q1FEs_zI1LAwdzGjyft6jtnzbJWqCh7EzoUe_j-9_nLjeW1BWPuFFPkl08ew64Yw51xUryxyHZcgX1xkxjVgdWEo63VIDjRklSAQqtquQaU40Lp6K9yq7-as9DVFcSLaFYZIDwwH1Ltcs1m6ij5358BhWEgdEwbijwDYlP2XUH3C5RL61-VTBKC3Fw_ioYERdzpPWziuf2rQ-p41Pu1YGTSrzOwQEA_07gFMq5Fyio5Q0qzOowswjm8ULACQk_lA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/rooms/available",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"rooms",
+						"available"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "default"
+		}
+	]
+}

@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brennum.hotel.api.model.Customer;
@@ -19,18 +19,15 @@ import com.brennum.hotel.db.CustomerRepository;
 @RequestMapping("/api/customers")
 public class CustomerController {
 
-    @Autowired
-    private CustomerRepository customerRepository;
-
-    @Autowired
-    private CustomerService customerService;
+    @Autowired private CustomerRepository customerRepository;
+    @Autowired private CustomerService customerService;
     
 
     @PostMapping
     public ResponseEntity<Customer> createCustomer(
-        @RequestBody String name, 
-        @RequestBody String email, 
-        @RequestBody String phone) {
+        @RequestParam String name, 
+        @RequestParam String email, 
+        @RequestParam String phone) {
             Customer c = customerService.createCustomer(name, email, phone);
             return ResponseEntity.ok(c);
     }
@@ -38,15 +35,15 @@ public class CustomerController {
     @PutMapping("/{id}")
     public ResponseEntity<Customer> updateCustomer(
         @PathVariable Integer id, 
-        @RequestBody String name, 
-        @RequestBody String email, 
-        @RequestBody String phone) {
+        @RequestParam String name, 
+        @RequestParam String email, 
+        @RequestParam String phone) {
             Customer c = customerService.updateCustomer(id, name, email, phone);
             return ResponseEntity.ok(c);
     }
 
     @PutMapping("{id}/setAdmin")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('SCOPE_admin')")
     public ResponseEntity<Customer> setAdmin(@PathVariable Integer id) {
         Customer c = customerRepository.findById(id)
             .orElseThrow(() -> new IllegalArgumentException("Customer not found"));

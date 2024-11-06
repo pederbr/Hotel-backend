@@ -1,11 +1,14 @@
 package com.brennum.hotel.api.service;
 
+import org.springframework.stereotype.Service;
+
 import com.brennum.hotel.api.model.AuditLog;
 import com.brennum.hotel.api.model.Customer;
 import com.brennum.hotel.db.AuditLogRepository;
 
 import jakarta.transaction.Transactional;
 
+@Service
 public class AuditLogService {
     
     private final AuditLogRepository auditLogRepository;

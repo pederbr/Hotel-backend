@@ -1,19 +1,42 @@
-
 spring:
   security:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://dev-zxitr0or4oay1a0n.us.auth0.com/
-          audiences: https://api.hotel.brennum
+          issuer-uri: https://dev-zxitr0or4oay1a0n.us.auth0.com/  # This is correct
+          jwk-set-uri: https://dev-zxitr0or4oay1a0n.us.auth0.com/.well-known/jwks.json  # Add this line
+
+  # It's better to move Auth0-specific configs to a separate section
+auth0:
+  audience: https://api.hotel.brennum  # Moved from audiences to auth0.audience
+
   application:
     name: hotel
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+
+  # Database configuration
   datasource:
     url: jdbc:mysql://localhost:3306/mydatabase
     username: myuser
     password: secret
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # JPA/Hibernate configuration
+  jpa:
+    hibernate:
+      ddl-auto: create # Will create tables on startup
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+# Logging
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    com.brennum.hotel: DEBUG
+    # Add these for debugging security issues
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: DEBUG
