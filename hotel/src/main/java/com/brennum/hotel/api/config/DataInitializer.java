@@ -5,7 +5,10 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +17,7 @@ import com.brennum.hotel.api.model.Room.RoomType;
 import com.brennum.hotel.db.RoomRepository;
 
 @Component
-public class DataInitializer implements CommandLineRunner {
+public class DataInitializer {
     private static final Logger logger = LoggerFactory.getLogger(DataInitializer.class);
     private final RoomRepository roomRepository;
     
@@ -22,10 +25,12 @@ public class DataInitializer implements CommandLineRunner {
         this.roomRepository = roomRepository;
     }
     
-    @Override
+    @EventListener(ApplicationReadyEvent.class)
     @Transactional
-    public void run(String... args) {
+    @Retryable(maxAttempts = 3, backoff = @Backoff(delay = 2000))
+    public void initialize() {
         try {
+            logger.info("Checking if database is ready...");
             if (roomRepository.count() == 0) {
                 logger.info("Starting room initialization...");
                 List<Room> rooms = new ArrayList<>();
